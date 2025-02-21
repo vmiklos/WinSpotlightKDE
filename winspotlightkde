@@ -47,11 +47,12 @@ curl -s $imageURL -o ${imgName}
 
 # Set the wallpaper for the desktop
 if [ "$setDesktop" == "yes" ]; then
-        qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops();
+        qdbus-qt5 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops();
         print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = 'org.kde.image';
         d.currentConfigGroup = Array('Wallpaper', 'org.kde.image', 'General');d.writeConfig('Image', 'file://${imgName}')}"
 fi
 
+exit 0
 # Set the wallpaper for the lockscreen
 if [ "$setLockscreen" == "yes" ]; then
         kwriteconfig5 --file $HOME/.config/kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "file://${imgName}"
