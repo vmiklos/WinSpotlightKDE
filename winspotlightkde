@@ -3,7 +3,7 @@
 # Set parameters for the downloading and setting of wallpapers
 
 # The locale for the images that will be downloaded
-locale=en-US
+locale=$(grep ^LANG= /etc/locale.conf |sed 's/.*=\(.*\)\..*/\1/;s/_/-/')
 
 # Path that downloaded Spotlight images will be saved to
 imgPath=$HOME/.winspotlightkde/
