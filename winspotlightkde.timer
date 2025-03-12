@@ -3,7 +3,7 @@ Description=WinSpotlightKDE
 
 [Timer]
 Unit=winspotlightkde.service
-OnCalendar=*-*-* 00:00:00
+OnCalendar=*-*-* 09:05:00
 Persistent=true
 
 [Install]
