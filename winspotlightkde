@@ -61,6 +61,14 @@ exiv2 -M"set Exif.Photo.UserComment $imageComment" ${imgName}
 # Also the XMP way, which is what nextcloud memories would read
 exiv2 -M"set Xmp.dc.title $imageComment" ${imgName}
 
+# Override image for a specific date range
+now=$(date +%s)
+start=$(date -d "2026-04-27" +%s)
+end=$(date -d "2026-05-01 23:59:59" +%s)
+if [ "$now" -ge "$start" ] && [ "$now" -le "$end" ]; then
+    imgName="${imgPath}/2026-04-07T07:11:22Z.jpeg"
+fi
+
 # Set the wallpaper for the desktop
 if [ "$setDesktop" == "yes" ]; then
         qdbus-qt5 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops();
